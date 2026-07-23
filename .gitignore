@@ -15,3 +15,4 @@ commands
 orchestrator
 MODEL_PROMPTER_BIGGER.md
 MODEL_PROMPTER_SMALLER.md
+package-lock.json
