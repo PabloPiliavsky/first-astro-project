@@ -1,0 +1,14 @@
+---
+import './Badge.css';
+
+interface Props {
+  variant?: 'indigo' | 'slate' | 'emerald' | 'amber';
+  class?: string;
+}
+
+const { variant = 'indigo', class: className = '' } = Astro.props;
+---
+
+<span class:list={['badge', `badge--${variant}`, className]}>
+  <slot />
+</span>

@@ -1,0 +1,18 @@
+---
+import { getDevToArticles } from '../services/articles/getDevToArticles';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  tag?: string;
+  limit?: number;
+}
+
+const { tag = 'astro', limit = 9 } = Astro.props;
+const articles = await getDevToArticles(tag, limit);
+---
+
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {articles.map((article) => (
+    <ArticleCard article={article} />
+  ))}
+</div>

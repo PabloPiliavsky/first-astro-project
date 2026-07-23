@@ -1,0 +1,14 @@
+---
+import './Card.css';
+
+interface Props {
+  variant?: 'default' | 'hoverable' | 'glass';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+---
+
+<div class:list={['ui-card', `ui-card--${variant}`, className]}>
+  <slot />
+</div>

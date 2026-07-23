@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DevToArticles from '../components/DevToArticles.astro';
+import ArticleSkeleton from '../components/ArticleSkeleton.astro';
+import VStack from '../components/ui/VStack.astro';
+import Text from '../components/ui/Text.astro';
+---
+
+<BaseLayout title="TechPulse | Noticias de Tecnología en Vivo">
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <VStack gap="xl">
+      <!-- CABECERA ESTÁTICA DE CARGA INSTANTÁNEA -->
+      <VStack gap="sm" align="center" class="text-center max-w-2xl mx-auto">
+        <Text as="h1" variant="h1" class="text-white">
+          Agregador de Noticias Tech
+        </Text>
+        <Text variant="lead">
+          Artículos en tiempo real sobre Astro y desarrollo web consumiendo la API de Dev.to con Server Islands.
+        </Text>
+      </VStack>
+
+      <!-- SECCIÓN DINÁMICA CON SERVER ISLAND (server:defer) -->
+      <DevToArticles server:defer tag="astro" limit={9}>
+        <div slot="fallback" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+        </div>
+      </DevToArticles>
+    </VStack>
+  </main>
+</BaseLayout>
